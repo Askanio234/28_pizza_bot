@@ -28,7 +28,7 @@ class Meal(data_base):
     description = Column(String(200))
 
     def __str__(self):
-        return "{} with {}".format(self.title, self.description)
+        return "{} с {}".format(self.title, self.description)
 
 
 class Option(data_base):
@@ -38,7 +38,7 @@ class Option(data_base):
     size = Column(String(100))
 
     def __str__(self):
-        return "a {} option at {}".format(self.size, self.price)
+        return "{} за {}р.".format(self.size, self.price)
 
 
 if __name__ == '__main__':
