@@ -3,8 +3,7 @@
 {% for entry in catalog -%}
 *{{ entry.title }} #{{loop.index}}*
 {{ entry.description }}
-    {%- for choice in entry.choices %}
-        {{ choice.title }} - *{{ choice.price }} руб.*
-    {%- endfor %}
+    {{ entry.first_option.size }} - *{{ entry.first_option.price }} руб.*
+    {{ entry.second_option.size }} - *{{ entry.second_option.price }} руб.*
 
 {% endfor %}
