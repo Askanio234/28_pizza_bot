@@ -1,19 +1,45 @@
-# Telegram Bot for Pizzeria
+# Телеграм-бот для пицерии
 
-[TODO. There will be project description]
+**сценарий:** Необходимо разработать телеграм-бота для пиццерии. Основная задача бота - вывод в чат меню.
 
-# How to Use
+**функционал:** Бот работает в связке с БД. Кроме непосредственно бота, реализована также и админка с *CRUD* функционалом. 
 
-Step 1. Register new telegram bot for development purposes, get the new token. [@BotFather](https://telegram.me/botfather)
+# Как запустить на localhost:
+## Приложение считывает несколько переменных окружения:
+*db_uri* - соединение с базой данных, по умолчанию - SQLite pizza_shop.sqlite
+*username* - логин к админке
+*password* - пароль к админке
+*secret_key* - секретный ключ для Flask
+*token* - ключ от телеграм-бота, получить можно у [@BotFather](https://telegram.me/botfather)
 
-Step 2. Launch
-
+## Перед запуском необходимо установить зависимости из requirements.txt:
+```#!bash
+pip install -r requirements.txt
 ```
-#!bash
 
-$ # the token below is not actual, you need to register a new one
-$ BOT_TOKEN="110831855:AAE_GbIeVAUwk11O12vq4UeMnl20iADUtM" python3 bot.py
+## Создаем модели:
+```#!bash
+python models.py
 ```
-# Project Goals
 
-The code is written for educational purposes. Training course for web-developers - [DEVMAN.org](https://devman.org)
+## Заносим в БД первоначальный каталог:
+```#!bash
+python load_catalogue.py
+```
+
+## Запуск серверного скрипта
+Запустить локально
+```#!bash
+python server.py 
+```
+Затем открыть в браузере [http://127.0.0.1:5000/admin/](http://127.0.0.1:5000/admin/)
+
+## Запуск скрипта бота
+Запустить локально
+```#!bash
+python bot.py 
+```
+
+# Цели проекта
+
+Код написан в образовательных целях. Курс веб-разработки – [DEVMAN.org](https://devman.org)
