@@ -6,11 +6,11 @@
 
 # Как запустить на localhost:
 ## Приложение считывает несколько переменных окружения:
-*db_uri* - соединение с базой данных, по умолчанию - SQLite pizza_shop.sqlite
-*username* - логин к админке
-*password* - пароль к админке
-*secret_key* - секретный ключ для Flask
-*token* - ключ от телеграм-бота, получить можно у [@BotFather](https://telegram.me/botfather)
+- *db_uri* - соединение с базой данных, по умолчанию - SQLite pizza_shop.sqlite
+- *username* - логин к админке
+- *password* - пароль к админке
+- *secret_key* - секретный ключ для Flask
+- *token* - ключ от телеграм-бота, получить можно у [@BotFather](https://telegram.me/botfather)
 
 ## Перед запуском необходимо установить зависимости из requirements.txt:
 ```#!bash
@@ -35,7 +35,6 @@ python server.py
 Затем открыть в браузере [http://127.0.0.1:5000/admin/](http://127.0.0.1:5000/admin/)
 
 ## Запуск скрипта бота
-Запустить локально
 ```#!bash
 python bot.py 
 ```
