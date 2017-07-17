@@ -20,10 +20,7 @@ data_base.query = db_session.query_property()
 class Meal(data_base):
     __tablename__ = "meals"
     id = Column(Integer, primary_key=True)
-    first_option_id = Column(Integer, ForeignKey("meal_option.id"))
-    second_option_id = Column(Integer, ForeignKey("meal_option.id"))
-    first_option = relationship("Option", foreign_keys=[first_option_id])
-    second_option = relationship("Option", foreign_keys=[second_option_id])
+    options = relationship("Option", backref="option")
     title = Column(String(50))
     description = Column(String(200))
 
@@ -36,6 +33,7 @@ class Option(data_base):
     id = Column(Integer, primary_key=True)
     price = Column(Integer)
     size = Column(String(100))
+    meal_id = Column(Integer, ForeignKey("meals.id"))
 
     def __str__(self):
         return "{} за {}р.".format(self.size, self.price)
