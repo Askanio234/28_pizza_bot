@@ -1,5 +1,4 @@
 import os
-from flask import Flask
 from sqlalchemy import create_engine
 from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import scoped_session, sessionmaker, relationship
@@ -19,7 +18,7 @@ data_base.query = db_session.query_property()
 
 class Meal(data_base):
     __tablename__ = "meals"
-    id = Column(Integer, primary_key=True)
+    meal_id = Column(Integer, primary_key=True)
     options = relationship("Option", backref="option")
     title = Column(String(50))
     description = Column(String(200))
@@ -30,10 +29,10 @@ class Meal(data_base):
 
 class Option(data_base):
     __tablename__ = "meal_option"
-    id = Column(Integer, primary_key=True)
+    option_id = Column(Integer, primary_key=True)
     price = Column(Integer)
     size = Column(String(100))
-    meal_id = Column(Integer, ForeignKey("meals.id"))
+    meal_id = Column(Integer, ForeignKey("meals.meal_id"))
 
     def __str__(self):
         return "{} за {}р.".format(self.size, self.price)

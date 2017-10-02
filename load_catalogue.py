@@ -1,17 +1,15 @@
-import os
-import argparse
-import json
 from models import Meal, Option, db_session
 from catalogue import catalogue
 
 
-def update_db(data):
-    for item in data:
-        meal = Meal(title=item["title"], description=item["description"])
-        for choice in item["choices"]:
+def update_db(catalogue):
+    for meal in catalogue:
+        meal_to_add = Meal(title=meal["title"],
+                            description=meal["description"])
+        for choice in meal["choices"]:
             option = Option(size=choice["title"], price=choice["price"])
-            meal.options.append(option)
-        db_session.add(meal)
+            meal_to_add.options.append(option)
+        db_session.add(meal_to_add)
     db_session.commit()
 
 
