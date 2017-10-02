@@ -1,6 +1,7 @@
 import os
 import telebot
 from jinja2 import Template
+from sqlalchemy.orm import joinedload
 from models import db_session, Meal
 
 
@@ -27,7 +28,7 @@ def greet(message):
 
 @bot.message_handler(commands=['menu'])
 def show_catalog(message):
-    catalog = db_session.query(Meal).all()
+    catalog = db_session.query(Meal).options(joinedload(Meal.options)).all()
     bot.send_message(message.chat.id,
             catalog_template.render(catalog=catalog), parse_mode='Markdown')
 
